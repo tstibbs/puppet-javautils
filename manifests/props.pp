@@ -1,21 +1,19 @@
-define props (
-    $input
+define javautils::props (
+    $input,
+    $file_path
 ) {
 
-    # example
-    # $input = {
-    #   "app.name" => "testapp",
-    #   "blah.thing" => "stuff stuff stuff"
-    # }
+    $augeasHash = $input.reduce( {} ) |$output, $pair| {
+		$key = $pair[0]
+		$value = $pair[1]
 
-    $augeasHash = $input.reduce( {} ) |Hash $output, Array $pair| {
-      $key = $pair[0]
-      $value = $pair[1]
-
-      $output["${file_path}--${key}"] = {
-          changes => ["set $key $value"],
-          Require => [File[$file_path]]
-      }
+		$output + [
+			"file_path--${key}",
+			{
+				changes => ["set ${key} '${value}'"],
+				#Require => [File[$file_path]]
+			}
+		]
     }
 
     $propsDefaults = {
@@ -24,7 +22,5 @@ define props (
     }
 
     create_resources(augeas, $augeasHash, $propsDefaults)
-	
-	notify {"${input} \nbecame \n${real_hash}":}
 
 }

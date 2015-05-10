@@ -2,12 +2,16 @@ class javautils (
 ) {
 
 	$inputHash = {
-        "app.name" => "testapp",
-        "blah.thing" => "stuff stuff stuff"
-    }
+		"app.name" => "testapp",
+		"home.directory" => "I am here",
+		"other.property" => "stuff stuff stuff"
+	}
 
-	javautils {"myfile":
-		input => $inputHash
+	$file_path = "/home/app.properties"
+
+	javautils::props {"update-app.properties":
+		input => $inputHash,
+		file_path => $file_path
 	}
 
 }
