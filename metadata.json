@@ -1,0 +1,14 @@
+{
+  "name": "tstibbs-mymodule",
+  "version": "0.1.0",
+  "author": "tstibbs",
+  "summary": "Useful tools for deploying java applications.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/tstibbs/puppet-javautils",
+  "project_page": "https://github.com/tstibbs/puppet-javautils",
+  "issues_url": "https://github.com/tstibbs/puppet-javautils/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
