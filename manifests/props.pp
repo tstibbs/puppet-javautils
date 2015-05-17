@@ -8,7 +8,7 @@ define javautils::props (
 		$value = $pair[1]
 
 		$output + [
-			"file_path--${key}",
+			"${file_path}--${key}",
 			{
 				changes => ["set ${key} '${value}'"],
 				#Require => [File[$file_path]]
