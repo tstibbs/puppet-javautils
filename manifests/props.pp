@@ -1,6 +1,6 @@
 define javautils::props (
     $input,
-    $file_path
+    $file_path = $name
 ) {
 
     $augeasHash = $input.reduce( {} ) |$output, $pair| {
